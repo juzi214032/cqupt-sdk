@@ -53,7 +53,7 @@ public class JwzxClassroomApplyServiceImpl implements JwzxClassroomApplyService 
 
         // 获取可选周次
         List<Map<String, String>> weeks = new ArrayList<>();
-        for (Element element : typeElements) {
+        for (Element element : weekElements) {
             Map<String, String> week = new HashMap<>(1);
             week.put(element.text(), element.attr("value"));
             weeks.add(week);
@@ -61,7 +61,7 @@ public class JwzxClassroomApplyServiceImpl implements JwzxClassroomApplyService 
 
         // 获取可选星期几
         List<Map<String, String>> weekNos = new ArrayList<>();
-        for (Element element : typeElements) {
+        for (Element element : weekNoElements) {
             Map<String, String> weekNo = new HashMap<>(1);
             weekNo.put(element.text(), element.attr("value"));
             weekNos.add(weekNo);
@@ -69,14 +69,14 @@ public class JwzxClassroomApplyServiceImpl implements JwzxClassroomApplyService 
 
         // 获取可选第几节
         List<Map<String, String>> courseNos = new ArrayList<>();
-        for (Element element : typeElements) {
+        for (Element element : courseNoElements) {
             Map<String, String> courseNo = new HashMap<>(1);
             courseNo.put(element.text(), element.attr("value"));
             courseNos.add(courseNo);
         }
 
         JwzxClassroomApplyInfo jwzxClassroomApplyInfo = new JwzxClassroomApplyInfo();
-        log.debug("用户[{}]，开始获取申请教室固定信息", username);
+        log.debug("用户[{}]，结束获取申请教室固定信息", username);
         return jwzxClassroomApplyInfo
                 .setAllTypes(types)
                 .setWeek(weeks)
@@ -96,13 +96,13 @@ public class JwzxClassroomApplyServiceImpl implements JwzxClassroomApplyService 
 
         Document document = this.jwzxService.get(AVAILABLE_CLASSROOM_URL, username, password, param);
         // 可申请教室
-        Elements classroomElements = document.select("input[name=room]");
+        Elements classroomElements = document.select("td");
 
         // 获取可申请教室列表
         List<Map<String, String>> classrooms = new ArrayList<>();
         for (Element element : classroomElements) {
             Map<String, String> classroom = new HashMap<>(1);
-            classroom.put(element.text(), element.val());
+            classroom.put(element.text(), element.select("input").val());
             classrooms.add(classroom);
         }
         log.debug("用户[{}]，结束获取可用教室", username);
@@ -121,14 +121,14 @@ public class JwzxClassroomApplyServiceImpl implements JwzxClassroomApplyService 
             Elements resultElements = element.select("td");
             JwzxClassroomApplyRecord record = new JwzxClassroomApplyRecord();
             record
-                    .setTerm(resultElements.get(0).text())
-                    .setApplyTime(resultElements.get(1).text())
-                    .setBorrowTime(resultElements.get(2).text())
-                    .setTitle(resultElements.get(3).text())
-                    .setPeopleCount(resultElements.get(4).text())
-                    .setLeader(resultElements.get(5).text())
-                    .setClassroom(resultElements.get(6).text())
-                    .setResult(resultElements.get(7).text());
+                    .setTerm(resultElements.get(1).text())
+                    .setApplyTime(resultElements.get(2).text())
+                    .setBorrowTime(resultElements.get(3).text())
+                    .setTitle(resultElements.get(4).text())
+                    .setPeopleCount(resultElements.get(5).text())
+                    .setLeader(resultElements.get(6).text())
+                    .setClassroom(resultElements.get(7).text())
+                    .setResult(resultElements.get(8).text());
             applyRecords.add(record);
         }
         log.debug("用户[{}]，结束获取教室申请记录", username);

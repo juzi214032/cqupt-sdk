@@ -1,5 +1,3 @@
-../target/
-target/
-../test/
-../*.iml
-../.idea/
+**/target/
+**/test/
+**/*.iml
