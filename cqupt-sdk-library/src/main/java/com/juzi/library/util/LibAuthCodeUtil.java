@@ -137,7 +137,7 @@ public class LibAuthCodeUtil {
     /**
      * 解析教务在线验证码
      *
-     * @param inputStream
+     * @param inputStream 文件输入流
      * @return
      */
     public static String jwzx(InputStream inputStream) {
