@@ -6,7 +6,6 @@
         <artifactId>cqupt-sdk</artifactId>
         <groupId>com.github.juzi214032</groupId>
         <version>1.0.0</version>
-        <relativePath>/</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
