@@ -25,6 +25,11 @@ public class JwzxSimpleConfig implements JwzxConfig {
     private Integer maxRetryTimes = 5;
 
     /**
+     * 超时时间
+     */
+    private int timeout;
+
+    /**
      * 内置账号
      */
     private String username;

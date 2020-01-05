@@ -2,9 +2,11 @@ package com.juzi.cqupt.sdk.jwzx.api;
 
 import com.juzi.cqupt.sdk.common.exception.CASLoginFailedException;
 import com.juzi.cqupt.sdk.jwzx.config.JwzxConfig;
+import com.juzi.cqupt.sdk.jwzx.exception.JwzxLoginFailedException;
 import org.jsoup.Connection;
 import org.jsoup.nodes.Document;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -145,4 +147,13 @@ public interface JwzxService {
      * @return 登录成功的cookie
      */
     String loginByCAS(String username, String password) throws CASLoginFailedException;
+
+    /**
+     * 使用教务在线自身系统登录
+     *
+     * @param username 账号
+     * @param password 密码
+     * @return
+     */
+    String loginBySystem(String username, String password) throws IOException, JwzxLoginFailedException;
 }

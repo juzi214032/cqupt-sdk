@@ -11,11 +11,15 @@
     <modules>
         <module>cqupt-sdk-jwzx</module>
         <module>cqupt-sdk-volunteer-web</module>
-        <module>cqupt-sdk-volunteer-app</module>
         <module>cqupt-sdk-common</module>
         <module>cqupt-sdk-library</module>
         <module>cqupt-sdk-oa</module>
     </modules>
+
+    <properties>
+        <ehcache.version>3.8.0</ehcache.version>
+        <hutool.version>5.1.0</hutool.version>
+    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -27,7 +31,7 @@
             <dependency>
                 <groupId>org.ehcache</groupId>
                 <artifactId>ehcache</artifactId>
-                <version>3.8.0</version>
+                <version>${ehcache.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -64,6 +68,11 @@
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
                 <version>2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-crypto</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

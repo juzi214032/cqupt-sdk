@@ -36,6 +36,11 @@ public interface JwzxConfig {
     Integer getMaxRetryTimes();
 
     /**
+     * @return http请求超时时间
+     */
+    int getTimeout();
+
+    /**
      * 内置账号
      * 用户获取学生照片时使用
      * 因为教务在线显示他人照片需要一个已登录的cookie

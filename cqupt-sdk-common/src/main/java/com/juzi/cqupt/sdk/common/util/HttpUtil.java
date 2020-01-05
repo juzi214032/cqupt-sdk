@@ -55,6 +55,17 @@ public class HttpUtil {
     }
 
     /**
+     * @param method  请求防范
+     * @param url     完整url链接
+     * @param timeout 超时时间
+     * @return Connection.Response对象
+     * @throws IOException http连接异常
+     */
+    public static Connection.Response excute(Connection.Method method, String url, int timeout) throws IOException {
+        return HttpUtil.excute(method, url, null, null, null, null, timeout);
+    }
+
+    /**
      * 底层通用请求封装
      *
      * @param method     请求方法
@@ -73,7 +84,8 @@ public class HttpUtil {
             Map<String, String> queryData,
             Map<String, String> headerData,
             Map<String, String> cookieData,
-            String bodyData, int timeout) throws IOException {
+            String bodyData,
+            int timeout) throws IOException {
 
         if (headerData == null) {
             headerData = new HashMap<>(0);
@@ -90,11 +102,12 @@ public class HttpUtil {
         return Jsoup
                 .connect(url)
                 .method(method)
+                .data(queryData)
+                .timeout(timeout)
                 .headers(headerData)
                 .cookies(cookieData)
-                .data(queryData)
                 .requestBody(bodyData)
-                .timeout(timeout)
+                .ignoreContentType(true)
                 .execute();
     }
 
