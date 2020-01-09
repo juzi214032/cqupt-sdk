@@ -2,7 +2,9 @@ package com.juzi.cqupt.sdk.jwzx.api.impl;
 
 import com.juzi.cqupt.sdk.jwzx.api.JwzxService;
 import com.juzi.cqupt.sdk.jwzx.api.JwzxTimetableService;
+import com.juzi.cqupt.sdk.jwzx.bean.JwzxMediationClass;
 import com.juzi.cqupt.sdk.jwzx.bean.JwzxTimetable;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,6 +19,7 @@ import java.util.List;
  * @since 2019/9/6 17:31
  * Blog https://juzibiji.top
  */
+@Slf4j
 public class JwzxTimetableServiceImpl implements JwzxTimetableService {
 
     private JwzxService jwzxService;
@@ -34,9 +37,35 @@ public class JwzxTimetableServiceImpl implements JwzxTimetableService {
 
     @Override
     public List<JwzxTimetable> getTeacherTimetable(String teacherId) {
-        Document document = jwzxService.get(TEACHER_COURSE_TABLE_URL + teacherId);
+        Document document = this.jwzxService.get(TEACHER_COURSE_TABLE_URL + teacherId);
         Element tbody = document.getElementById("kbTeaTabs-table").getElementsByTag("tbody").get(0);
         return this.parseCourseTable(tbody);
+    }
+
+    @Override
+    public List<JwzxMediationClass> getMediationClasses(String studentId) {
+        log.debug("学号[{}]，开始获取调停课列表", studentId);
+        Document document = this.jwzxService.get(MEDIATION_CLASS_URL + studentId);
+        List<JwzxMediationClass> mediationClassList = new ArrayList<>();
+        Elements mediationClassElements = document.select(".pTable tbody tr");
+        for (Element element : mediationClassElements) {
+            Elements result = element.select("td");
+            JwzxMediationClass mediationClass = new JwzxMediationClass();
+            mediationClass
+                    .setTerm(result.get(1).text())
+                    .setType(result.get(2).text())
+                    .setClassId(result.get(3).text())
+                    .setCourseName(result.get(4).text())
+                    .setTeacher(result.get(5).text())
+                    .setWeek(result.get(6).text())
+                    .setTime(result.get(7).text())
+                    .setMakeUpTime(result.get(8).text())
+                    .setMakeUpPlace(result.get(9).text())
+                    .setSupplyTeacher(result.get(9).text());
+            mediationClassList.add(mediationClass);
+        }
+        log.debug("学号[{}]，结束获取调停课列表", studentId);
+        return mediationClassList;
     }
 
     /**
