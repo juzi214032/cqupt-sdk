@@ -8,9 +8,8 @@ import java.util.List;
 /**
  * 时间接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/12 12:10
- * Blog https://juzibiji.top
  */
 public interface JwzxDateService {
 

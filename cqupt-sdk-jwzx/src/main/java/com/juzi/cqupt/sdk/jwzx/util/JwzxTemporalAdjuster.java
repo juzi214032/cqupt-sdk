@@ -7,9 +7,8 @@ import java.time.temporal.TemporalAdjuster;
 /**
  * 教务在线时间校正器
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/12 12:51
- * Blog https://juzibiji.top
  */
 public class JwzxTemporalAdjuster implements TemporalAdjuster {
     @Override

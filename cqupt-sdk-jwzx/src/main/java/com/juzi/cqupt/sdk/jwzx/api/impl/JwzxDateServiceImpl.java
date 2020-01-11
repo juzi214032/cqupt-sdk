@@ -15,9 +15,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/12 12:13
- * Blog https://juzibiji.top
  */
 public class JwzxDateServiceImpl implements JwzxDateService {
 

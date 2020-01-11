@@ -7,9 +7,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/17 22:27
- * Blog https://juzibiji.top
  */
 public class LibPersonInfoServiceImpl implements LibPersonInfoService {
 

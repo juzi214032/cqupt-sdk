@@ -6,9 +6,8 @@ import lombok.Data;
 /**
  * 教师信息
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/3 14:41
- * Blog https://juzibiji.top
  */
 @Data
 public class JwzxTeacher {

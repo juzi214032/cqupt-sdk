@@ -12,19 +12,18 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/29 1:00
- * Blog https://juzibiji.top
  */
 @Slf4j
-public class OaTransactionServiceImpl implements OaTransactionService {
+public class OaTransactionServiceImpl extends OaNewsServiceImpl implements OaTransactionService {
 
     private OaService oaService;
 
     public OaTransactionServiceImpl(OaService oaService) {
+        super(oaService);
         this.oaService = oaService;
     }
 
@@ -105,14 +104,6 @@ public class OaTransactionServiceImpl implements OaTransactionService {
 
     @Override
     public int getTotalPage() {
-        Document document = this.oaService.get(TRANSACTION_LIST_URL + 1);
-        String js = document.select(".content_area>.center>ul>script").toString();
-        Matcher matcher = TOTAL_PAGE_PATTERN.matcher(js);
-        if (matcher.find()) {
-            double totalPageDouble = Integer.parseInt(matcher.group()) / 20D;
-            double totalPageInt = Math.ceil(totalPageDouble);
-            return (int) totalPageInt;
-        }
-        return 0;
+        return super.getTotalPage(TRANSACTION_LIST_URL);
     }
 }

@@ -3,7 +3,7 @@ package com.juzi.library.config;
 /**
  * 图书馆网站相关配置
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  */
 public interface LibConfig {
 

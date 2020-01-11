@@ -3,9 +3,8 @@ package com.juzi.library.exception;
 /**
  * 用户第一次登录，未做姓名校验
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/11/22 17:16
- * Blog https://juzibiji.top
  */
 public class LibAccountUncheckException extends LibException {
     public LibAccountUncheckException() {

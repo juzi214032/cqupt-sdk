@@ -1,9 +1,10 @@
 package com.juzi.cqupt.sdk.oa.api.impl;
 
-import com.juzi.cqupt.sdk.oa.api.OaGovernmentService;
+import com.juzi.cqupt.sdk.oa.api.OaDispatchService;
 import com.juzi.cqupt.sdk.oa.api.OaService;
-import com.juzi.cqupt.sdk.oa.bean.OaGovernment;
-import com.juzi.cqupt.sdk.oa.bean.OaGovernmentFile;
+import com.juzi.cqupt.sdk.oa.bean.OaDispatch;
+import com.juzi.cqupt.sdk.oa.bean.OaDispatchFile;
+import com.juzi.cqupt.sdk.oa.enums.NewsType;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,28 +12,32 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/30 19:06
- * Blog https://juzibiji.top
  */
 @Slf4j
-public class OaGovernmentServiceImpl implements OaGovernmentService {
+public class OaDispatchServiceImpl extends OaNewsServiceImpl implements OaDispatchService {
 
     private OaService oaService;
 
-    public OaGovernmentServiceImpl(OaService oaService) {
+    public OaDispatchServiceImpl(OaService oaService) {
+        super(oaService);
         this.oaService = oaService;
     }
 
     @Override
-    public List<OaGovernment> getList(int pageOn) {
-        log.debug("开始获取[党政发文]列表");
-        List<OaGovernment> oaGovernmentList = new ArrayList<>();
+    public List<OaDispatch> getList(NewsType type, int pageOn) {
+        log.debug("开始获取[发文]列表");
+        List<OaDispatch> oaDispatchList = new ArrayList<>();
         // 访问网页
-        Document document = this.oaService.get(GOVERNMENT_LIST_URL + pageOn);
+        Document document = null;
+        if (type == NewsType.GOVERNMENT) {
+            document = this.oaService.get(GOVERNMENT_LIST_URL + pageOn);
+        } else if (type == NewsType.ALLIANCE) {
+            document = this.oaService.get(ALLIANCE_LIST_URL + pageOn);
+        }
         Elements meetingElements = document.select(".content_area>.center tr");
         // 第一行是表格标题，所以删除
         meetingElements.remove(0);
@@ -48,38 +53,45 @@ public class OaGovernmentServiceImpl implements OaGovernmentService {
             // 发布部门
             String releaseDepartment = meetingElement.select("td").get(3).text();
 
-            log.debug("正在解析[事务通知]，当前解析标题[{}]", title);
+            log.debug("正在解析[发文]，当前解析标题[{}]", title);
 
-            OaGovernment government = new OaGovernment();
+            OaDispatch government = new OaDispatch();
             government
                     .setReleaseTime(releaseTime)
                     .setTitle(title)
                     .setReleaseDepartment(releaseDepartment)
                     .setReleasePerson(releasePerson)
                     .setId(id);
-            oaGovernmentList.add(government);
+            oaDispatchList.add(government);
         }
-        log.debug("获取[事务通知]列表结束");
-        return oaGovernmentList;
+        log.debug("获取[发文]列表结束");
+        return oaDispatchList;
     }
 
     @Override
-    public OaGovernment getDetail(String id) {
-        log.debug("开始获取[党政发文]详情");
-        OaGovernment government = new OaGovernment();
-        Document document = this.oaService.get(GOVERNMENT_DETAIL_URL + id);
+    public OaDispatch getDetail(NewsType type, String id) {
+        log.debug("开始获取[发文]详情");
+        OaDispatch government = new OaDispatch();
+        Document document = null;
+        if (type == NewsType.GOVERNMENT) {
+            document = this.oaService.get(GOVERNMENT_DETAIL_URL + id);
+        } else if (type == NewsType.ALLIANCE) {
+            document = this.oaService.get(ALLIANCE_DETAIL_URL + id);
+        } else {
+            return null;
+        }
         // 标题
         String title = document.select("h2").text();
 
         //文件中的附件
-        List<OaGovernmentFile> fileList = new ArrayList<>();
+        List<OaDispatchFile> fileList = new ArrayList<>();
         Elements fileElements = document.select("a[href~=downLoadById]");
         for (Element fileElement : fileElements) {
-            OaGovernmentFile oaGovernmentFile = new OaGovernmentFile();
+            OaDispatchFile oaDispatchFile = new OaDispatchFile();
             String fileName = fileElement.text();
             String fileNo = fileElement.attr("href").substring(67);
-            oaGovernmentFile.setFileName(fileName).setGovernmentId(id).setFileNo(fileNo);
-            fileList.add(oaGovernmentFile);
+            oaDispatchFile.setFileName(fileName).setGovernmentId(id).setFileNo(fileNo);
+            fileList.add(oaDispatchFile);
         }
 
         // 详细信息
@@ -102,23 +114,18 @@ public class OaGovernmentServiceImpl implements OaGovernmentService {
                 .setIssuePerson(detailInfo.get(27).text())
                 .setFileList(fileList);
 
-        log.debug("结束获取[党政发文]详情");
+        log.debug("结束获取[发文]详情");
         return government;
     }
 
     @Override
-    public int getTotalPage() {
-        log.debug("党政发文-开始获取页码总数");
-        Document document = this.oaService.get(GOVERNMENT_LIST_URL + 1);
-        String js = document.select(".content_area>.center>ul>script").toString();
-        Matcher matcher = TOTAL_PAGE_PATTERN.matcher(js);
-        if (matcher.find()) {
-            double totalPageDouble = Integer.parseInt(matcher.group()) / 20D;
-            double totalPageInt = Math.ceil(totalPageDouble);
-            log.debug("党政发文-获取页码总数成功，页码总数为[{}]", (int) totalPageInt);
-            return (int) totalPageInt;
+    public int getTotalPage(NewsType type) {
+        if (type == NewsType.GOVERNMENT) {
+            return super.getTotalPage(GOVERNMENT_LIST_URL);
+        } else if (type == NewsType.ALLIANCE) {
+            return super.getTotalPage(ALLIANCE_LIST_URL);
+        } else {
+            return 0;
         }
-        log.warn("党政发文-获取页码总数失败，返回默认页码数0");
-        return 0;
     }
 }

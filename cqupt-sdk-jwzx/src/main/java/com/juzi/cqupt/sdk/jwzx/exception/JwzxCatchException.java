@@ -3,9 +3,8 @@ package com.juzi.cqupt.sdk.jwzx.exception;
 /**
  * 需要捕获的异常
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2020/1/3 19:00
- * Blog https://juzibiji.top
  */
 public class JwzxCatchException extends Exception {
     public JwzxCatchException() {

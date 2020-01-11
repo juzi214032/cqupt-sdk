@@ -17,9 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2020/1/3 16:50
- * Blog https://juzibiji.top
  */
 @Slf4j
 public class JwzxClassroomApplyServiceImpl implements JwzxClassroomApplyService {

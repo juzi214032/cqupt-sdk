@@ -14,9 +14,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/9 20:48
- * Blog https://juzibiji.top
  */
 public class JwzxClassroomInfoServiceImpl implements JwzxClassroomInfoService {
 

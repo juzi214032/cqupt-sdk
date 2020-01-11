@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 /**
  * 教材
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

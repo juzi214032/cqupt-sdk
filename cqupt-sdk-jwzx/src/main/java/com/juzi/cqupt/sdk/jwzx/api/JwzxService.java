@@ -12,9 +12,8 @@ import java.util.Map;
 /**
  * 教务在线公用服务
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/1 19:47
- * Blog https://juzibiji.top
  */
 public interface JwzxService {
 

@@ -10,9 +10,8 @@ import java.util.Map;
 /**
  * 教室申请
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2020/1/3 16:19
- * Blog https://juzibiji.top
  */
 public interface JwzxClassroomApplyService {
 

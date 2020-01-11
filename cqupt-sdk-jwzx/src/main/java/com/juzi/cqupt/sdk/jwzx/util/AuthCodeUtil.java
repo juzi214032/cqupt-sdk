@@ -6,9 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/3/28 21:29
- * Blog https://juzibiji.top
  */
 public class AuthCodeUtil {
 

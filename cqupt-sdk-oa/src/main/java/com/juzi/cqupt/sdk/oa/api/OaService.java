@@ -8,9 +8,8 @@ import java.util.Map;
 /**
  * OA基础服务
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2019/12/28 22:10
- * Blog https://juzibiji.top
  */
 public interface OaService {
 

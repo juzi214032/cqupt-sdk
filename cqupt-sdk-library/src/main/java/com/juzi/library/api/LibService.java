@@ -7,9 +7,8 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/16 14:22
- * Blog https://juzibiji.top
  */
 public interface LibService {
 

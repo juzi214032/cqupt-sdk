@@ -3,14 +3,12 @@ package com.juzi.cqupt.sdk.oa.api;
 import com.juzi.cqupt.sdk.oa.bean.OaTransaction;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * 事务通知
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2019/12/29 0:54
- * Blog https://juzibiji.top
  */
 public interface OaTransactionService {
 
@@ -23,11 +21,6 @@ public interface OaTransactionService {
      * 详情页uri
      */
     String TRANSACTION_DETAIL_URL = "/notify.do?method=oneNotify&notifyId=";
-
-    /**
-     * 提取页码总数正则
-     */
-    Pattern TOTAL_PAGE_PATTERN = Pattern.compile("(?<=ShowoPage\\().*?(?=,)");
 
     /**
      * 获取事务通知列表

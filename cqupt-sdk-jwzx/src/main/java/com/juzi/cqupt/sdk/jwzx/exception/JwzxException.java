@@ -3,9 +3,8 @@ package com.juzi.cqupt.sdk.jwzx.exception;
 /**
  * 教务在线公共异常
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/2 12:47
- * Blog https://juzibiji.top
  */
 public class JwzxException extends RuntimeException {
     public JwzxException(String message) {

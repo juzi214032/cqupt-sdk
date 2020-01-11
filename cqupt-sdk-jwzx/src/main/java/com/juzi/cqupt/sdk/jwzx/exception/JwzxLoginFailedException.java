@@ -3,9 +3,8 @@ package com.juzi.cqupt.sdk.jwzx.exception;
 /**
  * 登录失败
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/2 12:49
- * Blog https://juzibiji.top
  */
 public class JwzxLoginFailedException extends RuntimeException {
     public JwzxLoginFailedException() {

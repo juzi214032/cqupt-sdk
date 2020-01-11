@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 /**
  * 时长记录
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

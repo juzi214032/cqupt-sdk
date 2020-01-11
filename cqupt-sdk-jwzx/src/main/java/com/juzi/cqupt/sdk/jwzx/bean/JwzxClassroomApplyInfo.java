@@ -15,9 +15,8 @@ import java.util.Map;
  * key->显示名称
  * value->表单应提交的数据值
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2020/1/3 16:25
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

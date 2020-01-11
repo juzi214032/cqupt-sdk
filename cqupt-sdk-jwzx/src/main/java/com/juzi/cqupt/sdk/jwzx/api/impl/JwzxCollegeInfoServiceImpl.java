@@ -16,9 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/3 15:30
- * Blog https://juzibiji.top
  */
 public class JwzxCollegeInfoServiceImpl implements JwzxCollegeInfoService {
 

@@ -5,9 +5,8 @@ import lombok.Getter;
 /**
  * OA系统资讯类型
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/29 0:09
- * Blog https://juzibiji.top
  */
 @Getter
 public enum NewsType {
@@ -60,16 +59,16 @@ public enum NewsType {
     /**
      * 列表页uri
      */
-    private String listUri;
+    private String listUrl;
 
     /**
      * 详情页uri
      */
-    private String detailUri;
+    private String detailUrl;
 
-    NewsType(String name, String listUri, String detailUri) {
+    NewsType(String name, String listUrl, String detailUrl) {
         this.name = name;
-        this.listUri = listUri;
-        this.detailUri = detailUri;
+        this.listUrl = listUrl;
+        this.detailUrl = detailUrl;
     }
 }

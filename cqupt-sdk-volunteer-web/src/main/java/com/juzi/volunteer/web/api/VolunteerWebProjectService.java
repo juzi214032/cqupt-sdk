@@ -9,9 +9,8 @@ import java.util.List;
 /**
  * 项目接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/9 18:24
- * Blog https://juzibiji.top
  */
 public interface VolunteerWebProjectService {
 

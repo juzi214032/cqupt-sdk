@@ -9,9 +9,8 @@ import java.util.Map;
 /**
  * 成绩查询接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/11 12:23
- * Blog https://juzibiji.top
  */
 public interface JwzxGradeService {
 

@@ -3,9 +3,8 @@ package com.juzi.cqupt.sdk.common.enums;
 /**
  * CAS单点登录服务枚举
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2019/12/27 21:02
- * Blog https://juzibiji.top
  */
 public enum CASService {
 

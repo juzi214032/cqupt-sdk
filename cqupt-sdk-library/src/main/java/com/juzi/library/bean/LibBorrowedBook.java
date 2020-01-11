@@ -8,9 +8,8 @@ import java.time.LocalDate;
 /**
  * 已借阅的图书
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/11/22 11:24
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

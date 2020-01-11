@@ -7,9 +7,8 @@ import org.jsoup.select.Elements;
 /**
  * 图书馆页面获取的个人信息
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/16 14:04
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

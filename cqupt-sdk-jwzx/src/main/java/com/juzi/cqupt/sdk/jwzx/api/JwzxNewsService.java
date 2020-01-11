@@ -7,9 +7,8 @@ import org.jsoup.Connection;
 /**
  * 教务在线新闻
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/6 19:17
- * Blog https://juzibiji.top
  */
 public interface JwzxNewsService {
 

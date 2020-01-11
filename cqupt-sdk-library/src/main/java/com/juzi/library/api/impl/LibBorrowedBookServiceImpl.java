@@ -13,9 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/11/22 11:32
- * Blog https://juzibiji.top
  */
 public class LibBorrowedBookServiceImpl implements LibBorrowedBookService {
 

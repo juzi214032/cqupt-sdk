@@ -3,14 +3,12 @@ package com.juzi.cqupt.sdk.oa.api;
 import com.juzi.cqupt.sdk.oa.bean.OaPublicity;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * 公示公告
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2019/12/30 19:34
- * Blog https://juzibiji.top
  */
 public interface OaPublicityService {
     /**
@@ -21,10 +19,6 @@ public interface OaPublicityService {
      * 详情uril
      */
     String PUBLICITY_DETAIL_URL = "/notify.do?method=oneNotify&notifyId=";
-    /**
-     * 提取页码总数正则
-     */
-    Pattern TOTAL_PAGE_PATTERN = Pattern.compile("(?<=ShowoPage\\().*?(?=,)");
 
     /**
      * 获取列表
@@ -35,11 +29,14 @@ public interface OaPublicityService {
     List<OaPublicity> getList(int onPage);
 
     /**
+     * @param id 公示公告id
      * @return 公示公告详情
      */
-    OaPublicity getDetail();
+    OaPublicity getDetail(String id);
 
     /**
+     * 获取公示公告总页数
+     *
      * @return 总页码
      */
     int getTotalPage();

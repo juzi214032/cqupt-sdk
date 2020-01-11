@@ -9,9 +9,8 @@ import java.util.Map;
 /**
  * 中国志愿网接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/8 21:29
- * Blog https://juzibiji.top
  */
 public interface VolunteerWebService {
 

@@ -9,9 +9,8 @@ import java.util.List;
 /**
  * 教务在线新闻
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/6 19:18
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

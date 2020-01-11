@@ -9,9 +9,8 @@ import com.juzi.cqupt.sdk.jwzx.config.JwzxConfig;
 import java.util.List;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/3 14:49
- * Blog https://juzibiji.top
  */
 public class JwzxTeacherInfoServiceImpl implements JwzxTeacherInfoService {
 

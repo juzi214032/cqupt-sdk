@@ -4,27 +4,26 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 公示公告文件
+ * 信息文件
  *
  * @author Juzi - https://juzibiji.top
- * @since 2019/12/30 19:32
+ * @since 2020/1/11 13:32
  */
 @Data
 @Accessors(chain = true)
-public class OaPublicityFile {
-
+public class OaInformationFile {
     /**
      * 文件名
      */
     private String fileName;
 
     /**
-     * 公示公告id
+     * 通知id
      */
-    private String publicityId;
+    private String informationId;
 
     /**
-     * 文件编号
+     * 文件id
      */
-    private String fileNo;
+    private String fileId;
 }

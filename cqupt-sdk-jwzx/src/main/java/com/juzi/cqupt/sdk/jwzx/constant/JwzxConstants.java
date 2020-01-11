@@ -3,9 +3,8 @@ package com.juzi.cqupt.sdk.jwzx.constant;
 /**
  * 教务在线相关常量
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/1 22:24
- * Blog https://juzibiji.top
  */
 public class JwzxConstants {
     /**

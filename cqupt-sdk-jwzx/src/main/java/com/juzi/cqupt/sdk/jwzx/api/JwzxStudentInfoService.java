@@ -9,9 +9,8 @@ import java.util.List;
 /**
  * 学生信息获取
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/1 21:27
- * Blog https://juzibiji.top
  */
 public interface JwzxStudentInfoService {
 

@@ -14,9 +14,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/9 23:24
- * Blog https://juzibiji.top
  */
 public class VolunteerWebHoursServiceImpl implements VolunteerWebHoursService {
 

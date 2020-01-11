@@ -8,9 +8,8 @@ import java.util.List;
 /**
  * 会议通知
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/28 22:39
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

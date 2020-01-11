@@ -12,9 +12,8 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/28 22:16
- * Blog https://juzibiji.top
  */
 @Slf4j
 public class OaServiceImpl implements OaService {

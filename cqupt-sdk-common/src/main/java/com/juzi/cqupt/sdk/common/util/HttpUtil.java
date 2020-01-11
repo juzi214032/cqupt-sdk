@@ -14,9 +14,8 @@ import java.util.Map;
 /**
  * Http请求工具
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/27 20:49
- * Blog https://juzibiji.top
  */
 @Slf4j
 public class HttpUtil {

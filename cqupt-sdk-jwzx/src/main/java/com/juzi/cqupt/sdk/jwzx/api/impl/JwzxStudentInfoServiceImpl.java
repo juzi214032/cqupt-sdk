@@ -20,9 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/2 12:56
- * Blog https://juzibiji.top
  */
 public class JwzxStudentInfoServiceImpl implements JwzxStudentInfoService {
 

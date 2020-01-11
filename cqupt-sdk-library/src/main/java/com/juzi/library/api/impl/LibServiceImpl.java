@@ -25,9 +25,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/16 14:41
- * Blog https://juzibiji.top
  */
 @Slf4j
 public class LibServiceImpl implements LibService {

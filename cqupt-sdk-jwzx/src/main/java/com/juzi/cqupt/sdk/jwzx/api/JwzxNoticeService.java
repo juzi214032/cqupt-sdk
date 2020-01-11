@@ -5,9 +5,8 @@ import java.util.List;
 /**
  * 教务在线首页的公告
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2020/1/4 21:23
- * Blog https://juzibiji.top
  */
 public interface JwzxNoticeService {
 

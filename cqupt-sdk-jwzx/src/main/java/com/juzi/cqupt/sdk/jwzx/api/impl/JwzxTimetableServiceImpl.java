@@ -15,9 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/6 17:31
- * Blog https://juzibiji.top
  */
 @Slf4j
 public class JwzxTimetableServiceImpl implements JwzxTimetableService {

@@ -33,9 +33,8 @@ import java.util.Map;
 /**
  * 教务在线公用逻辑实现代码
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/1 19:56
- * Blog https://juzibiji.top
  */
 @Slf4j
 public class JwzxServiceImpl implements JwzxService {

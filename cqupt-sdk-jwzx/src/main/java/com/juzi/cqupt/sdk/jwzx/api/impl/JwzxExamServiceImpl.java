@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/1 23:30
- * Blog https://juzibiji.top
  */
 public class JwzxExamServiceImpl implements JwzxExamService {
 

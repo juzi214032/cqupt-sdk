@@ -8,9 +8,8 @@ import java.util.List;
 /**
  * 课表接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/6 17:09
- * Blog https://juzibiji.top
  */
 public interface JwzxTimetableService {
 

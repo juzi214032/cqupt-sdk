@@ -5,9 +5,8 @@ import lombok.Data;
 /**
  * 新闻列表
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/11/27 0:42
- * Blog https://juzibiji.top
  */
 @Data
 public class JwzxNewsList {

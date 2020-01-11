@@ -7,9 +7,8 @@ import java.util.List;
 /**
  * 通用资讯方法
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2019/12/28 22:39
- * Blog https://juzibiji.top
  */
 public interface OaMeetingService {
 
@@ -32,4 +31,11 @@ public interface OaMeetingService {
      * @return 资讯
      */
     OaMeeting getDetail(String newsId);
+
+    /**
+     * 获取会议通知总页数
+     *
+     * @return 总页码
+     */
+    int getTotalPage();
 }

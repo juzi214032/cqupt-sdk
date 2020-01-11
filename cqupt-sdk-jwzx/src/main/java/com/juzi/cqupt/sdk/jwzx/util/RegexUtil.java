@@ -8,9 +8,8 @@ import java.util.regex.Pattern;
 /**
  * 正则工具
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/2 19:28
- * Blog https://juzibiji.top
  */
 public class RegexUtil {
     public static List<String> parse(String regex, String source) {

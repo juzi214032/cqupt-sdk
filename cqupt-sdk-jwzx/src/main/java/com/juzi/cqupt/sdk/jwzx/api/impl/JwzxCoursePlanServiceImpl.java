@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2020/1/9 10:29
- * Blog https://juzibiji.top
  */
 public class JwzxCoursePlanServiceImpl implements JwzxCoursePlanService {
 

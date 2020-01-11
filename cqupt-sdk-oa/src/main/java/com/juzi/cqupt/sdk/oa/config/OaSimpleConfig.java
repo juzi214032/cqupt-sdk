@@ -4,9 +4,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/28 22:19
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

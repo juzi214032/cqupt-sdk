@@ -13,15 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/28 22:48
- * Blog https://juzibiji.top
  */
 @Slf4j
-public class OaMeetingServiceImpl implements OaMeetingService {
+public class OaMeetingServiceImpl extends OaNewsServiceImpl implements OaMeetingService {
     private OaService oaService;
 
     public OaMeetingServiceImpl(OaService oaService) {
+        super(oaService);
         this.oaService = oaService;
     }
 
@@ -87,4 +87,8 @@ public class OaMeetingServiceImpl implements OaMeetingService {
         return meeting;
     }
 
+    @Override
+    public int getTotalPage() {
+        return super.getTotalPage(MEETING_LIST_URL);
+    }
 }

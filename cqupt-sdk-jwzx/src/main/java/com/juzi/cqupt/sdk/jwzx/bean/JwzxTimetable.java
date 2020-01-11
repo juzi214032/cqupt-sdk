@@ -6,9 +6,8 @@ import lombok.experimental.Accessors;
 /**
  * 课表上的课程
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/6 17:11
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)

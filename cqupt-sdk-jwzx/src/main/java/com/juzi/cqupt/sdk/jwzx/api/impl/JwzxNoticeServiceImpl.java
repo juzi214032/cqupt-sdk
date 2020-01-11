@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2020/1/4 21:24
- * Blog https://juzibiji.top
  */
 @Slf4j
 public class JwzxNoticeServiceImpl implements JwzxNoticeService {

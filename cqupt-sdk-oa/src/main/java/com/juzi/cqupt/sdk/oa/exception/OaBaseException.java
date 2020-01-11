@@ -1,9 +1,8 @@
 package com.juzi.cqupt.sdk.oa.exception;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/28 22:31
- * Blog https://juzibiji.top
  */
 public class OaBaseException extends RuntimeException {
 

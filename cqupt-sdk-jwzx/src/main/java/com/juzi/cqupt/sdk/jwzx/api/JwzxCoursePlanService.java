@@ -7,9 +7,8 @@ import java.util.List;
 /**
  * 授课计划
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2020/1/9 10:25
- * Blog https://juzibiji.top
  */
 public interface JwzxCoursePlanService {
 

@@ -7,9 +7,8 @@ import java.util.List;
 /**
  * 教务在线新闻列表结果封装
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/11/27 0:49
- * Blog https://juzibiji.top
  */
 @Data
 public class JwzxNewsListResult {

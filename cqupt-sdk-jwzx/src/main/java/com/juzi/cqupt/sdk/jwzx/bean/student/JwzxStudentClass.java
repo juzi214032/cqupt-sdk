@@ -6,7 +6,7 @@ import lombok.ToString;
 /**
  * 选课学生信息
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  */
 @Data
 @ToString(callSuper = true)

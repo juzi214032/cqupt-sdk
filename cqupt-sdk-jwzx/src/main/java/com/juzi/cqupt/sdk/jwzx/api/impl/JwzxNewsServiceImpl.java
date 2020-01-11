@@ -20,9 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/6 19:29
- * Blog https://juzibiji.top
  */
 public class JwzxNewsServiceImpl implements JwzxNewsService {
 

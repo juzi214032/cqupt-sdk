@@ -66,9 +66,8 @@
          /**
           * 爬虫配置
           *
-          * @author Juzi
+          * @author Juzi - https://juzibiji.top
           * @since 2019/9/21 18:54
-          * Blog https://juzibiji.top
           */
          @Configuration
          public class CquptSdkConfig {

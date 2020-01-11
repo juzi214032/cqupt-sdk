@@ -14,9 +14,8 @@ import java.util.Map;
  * 单点登录工具类
  * 重庆邮电大学同一身份认证登录
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/27 21:00
- * Blog https://juzibiji.top
  */
 @Slf4j
 public class CASLoginUtil {

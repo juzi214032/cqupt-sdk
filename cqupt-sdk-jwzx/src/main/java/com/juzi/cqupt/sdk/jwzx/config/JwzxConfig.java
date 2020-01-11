@@ -3,7 +3,7 @@ package com.juzi.cqupt.sdk.jwzx.config;
 /**
  * 教务在线相关配置
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  */
 public interface JwzxConfig {
 

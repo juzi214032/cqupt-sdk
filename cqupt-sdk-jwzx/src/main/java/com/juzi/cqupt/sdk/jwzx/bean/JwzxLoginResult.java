@@ -5,9 +5,8 @@ import lombok.Data;
 /**
  * 教务在线登陆接口响应结果
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/1 18:35
- * Blog https://juzibiji.top
  */
 @Data
 public class JwzxLoginResult {

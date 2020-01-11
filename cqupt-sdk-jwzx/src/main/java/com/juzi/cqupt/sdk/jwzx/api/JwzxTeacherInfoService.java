@@ -7,9 +7,8 @@ import java.util.List;
 /**
  * 教师信息接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/3 14:47
- * Blog https://juzibiji.top
  */
 public interface JwzxTeacherInfoService {
 

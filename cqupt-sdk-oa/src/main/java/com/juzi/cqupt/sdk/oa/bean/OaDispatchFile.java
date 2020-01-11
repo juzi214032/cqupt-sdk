@@ -4,15 +4,14 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 党政发文文件
+ * 发文文件
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/30 19:02
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)
-public class OaGovernmentFile {
+public class OaDispatchFile {
 
     /**
      * 文件名称

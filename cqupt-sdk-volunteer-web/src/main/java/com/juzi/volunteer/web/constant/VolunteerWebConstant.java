@@ -3,9 +3,8 @@ package com.juzi.volunteer.web.constant;
 /**
  * 中国志愿服务网-重庆
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/5 22:20
- * Blog https://juzibiji.top
  */
 public class VolunteerWebConstant {
 

@@ -7,9 +7,8 @@ import java.util.List;
 /**
  * 教室接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/9 20:44
- * Blog https://juzibiji.top
  */
 public interface JwzxClassroomInfoService {
 

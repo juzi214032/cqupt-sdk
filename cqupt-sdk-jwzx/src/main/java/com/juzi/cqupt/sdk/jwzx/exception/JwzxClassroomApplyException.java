@@ -3,9 +3,8 @@ package com.juzi.cqupt.sdk.jwzx.exception;
 /**
  * 教室申请异常
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2020/1/3 19:01
- * Blog https://juzibiji.top
  */
 public class JwzxClassroomApplyException extends JwzxCatchException {
     public JwzxClassroomApplyException() {

@@ -7,9 +7,8 @@ import java.util.List;
 /**
  * 已借阅图书接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2019/11/22 11:19
- * Blog https://juzibiji.top
  */
 public interface LibBorrowedBookService {
 

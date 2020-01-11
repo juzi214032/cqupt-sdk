@@ -5,9 +5,8 @@ import lombok.Data;
 /**
  * 登录结果
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/8 22:32
- * Blog https://juzibiji.top
  */
 @Data
 public class VolunteerWebLoginResult {

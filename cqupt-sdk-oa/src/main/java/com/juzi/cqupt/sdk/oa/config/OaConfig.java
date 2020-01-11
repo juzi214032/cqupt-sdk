@@ -1,9 +1,8 @@
 package com.juzi.cqupt.sdk.oa.config;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @date 2019/12/28 22:18
- * Blog https://juzibiji.top
  */
 public interface OaConfig {
 

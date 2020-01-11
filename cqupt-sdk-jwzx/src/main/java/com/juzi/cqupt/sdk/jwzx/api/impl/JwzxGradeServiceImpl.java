@@ -17,9 +17,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/9/11 12:31
- * Blog https://juzibiji.top
  */
 public class JwzxGradeServiceImpl implements JwzxGradeService {
 

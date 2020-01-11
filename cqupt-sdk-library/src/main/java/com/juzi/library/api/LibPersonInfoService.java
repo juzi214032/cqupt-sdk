@@ -7,9 +7,8 @@ import java.io.IOException;
 /**
  * 个人信息接口
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/8/17 22:19
- * Blog https://juzibiji.top
  */
 public interface LibPersonInfoService {
 

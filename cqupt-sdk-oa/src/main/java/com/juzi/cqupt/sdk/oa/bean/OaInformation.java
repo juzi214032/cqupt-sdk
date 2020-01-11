@@ -6,15 +6,33 @@ import lombok.experimental.Accessors;
 import java.util.List;
 
 /**
- * 事务通知
+ * 通用信息
+ * <p>
+ * 包含：
+ * 简报信息
+ * 学术活动
+ * 教学动态
+ * 科研工作
+ * 学生工作
  *
  * @author Juzi - https://juzibiji.top
- * @since 2019/12/29 0:56
+ * @since 2020/1/11 12:30
  */
 @Data
 @Accessors(chain = true)
-public class OaTransaction {
+public class OaInformation {
+    /**
+     * 信息id
+     */
     private String id;
+    /**
+     * 标题
+     */
+    private String title;
+    /**
+     * 内容
+     */
+    private String content;
     /**
      * 发布时间
      */
@@ -32,19 +50,11 @@ public class OaTransaction {
      */
     private String reviewer;
     /**
-     * 流程名称
+     * 浏览量
      */
-    private String processName;
+    private String views;
     /**
-     * 标题
+     * 附件
      */
-    private String title;
-    /**
-     * 内容
-     */
-    private String content;
-    /**
-     * 附件列表
-     */
-    private List<OaTransactionFile> fileList;
+    private List<OaInformationFile> files;
 }

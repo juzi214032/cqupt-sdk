@@ -6,15 +6,14 @@ import lombok.experimental.Accessors;
 import java.util.List;
 
 /**
- * 党政发文
+ * 发文
  *
- * @author Juzi
+ * @author Juzi - https://juzibiji.top
  * @since 2019/12/29 20:50
- * Blog https://juzibiji.top
  */
 @Data
 @Accessors(chain = true)
-public class OaGovernment {
+public class OaDispatch {
 
     /**
      * 唯一id
@@ -83,5 +82,5 @@ public class OaGovernment {
     /**
      * 文件列表
      */
-    private List<OaGovernmentFile> fileList;
+    private List<OaDispatchFile> fileList;
 }
