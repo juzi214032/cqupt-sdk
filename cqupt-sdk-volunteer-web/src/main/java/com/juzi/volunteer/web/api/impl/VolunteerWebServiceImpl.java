@@ -1,12 +1,14 @@
 package com.juzi.volunteer.web.api.impl;
 
+import cn.hutool.core.codec.Base64;
+import cn.hutool.crypto.asymmetric.AsymmetricCrypto;
+import cn.hutool.crypto.asymmetric.KeyType;
 import com.alibaba.fastjson.JSON;
 import com.juzi.volunteer.web.api.VolunteerWebService;
 import com.juzi.volunteer.web.bean.VolunteerWebLoginResult;
 import com.juzi.volunteer.web.config.VolunteerWebConfig;
 import com.juzi.volunteer.web.constant.VolunteerWebConstant;
 import com.juzi.volunteer.web.exception.VolunteerWebException;
-import com.juzi.volunteer.web.util.encrypt.RSAUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.ehcache.Cache;
@@ -32,6 +34,8 @@ import java.util.Map;
 public class VolunteerWebServiceImpl implements VolunteerWebService {
 
     private VolunteerWebConfig volunteerWebConfig;
+
+    private static AsymmetricCrypto RSA = new AsymmetricCrypto("RSA", null, VolunteerWebConstant.PUBLIC_KEY);
 
     /**
      * 存放cookie的cache，半小时失效
@@ -100,12 +104,12 @@ public class VolunteerWebServiceImpl implements VolunteerWebService {
         } catch (IOException e) {
             log.error("解析登录页面出错，登录账号{}", username);
         }
-        String seid = document.getElementById("seid").val();
+        String seid = document.select("#seid").val();
         String csrfToken = document.getElementsByTag("meta").get(1).attr("content");
 
         // 密码加密
         try {
-            password = RSAUtil.encrypt(password, VolunteerWebConstant.PUBLIC_KEY);
+            password = Base64.encode(RSA.encrypt(password, KeyType.PublicKey));
         } catch (Exception e) {
             e.printStackTrace();
         }

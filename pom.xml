@@ -18,7 +18,7 @@
 
     <properties>
         <ehcache.version>3.8.0</ehcache.version>
-        <hutool.version>5.1.0</hutool.version>
+        <hutool.version>5.1.1</hutool.version>
     </properties>
 
     <dependencyManagement>
