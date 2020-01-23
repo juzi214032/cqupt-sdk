@@ -57,73 +57,75 @@
    ```java
    ```java
       ```java
-         package com.juzi.cyzs.config;
-         
-         import com.juzi.cqupt.sdk.jwzx.config.JwzxSimpleConfig;
-         import org.springframework.context.annotation.Bean;
-         import org.springframework.context.annotation.Configuration;
-         
-         /**
-          * 爬虫配置
-          *
-          * @author Juzi - https://juzibiji.top
-          * @since 2019/9/21 18:54
-          */
-         @Configuration
-         public class CquptSdkConfig {
-             
-             /**
-              * @return 基础服务
-              */
-             @Bean
-             public JwzxService jwzxService() {
-                 JwzxSimpleConfig jwzxSimpleConfig = new JwzxSimpleConfig(false);
-                 jwzxSimpleConfig.setDomainOut("http://jwzx.cqu.pt");
-                 return new JwzxServiceImpl(jwzxSimpleConfig);
-             }
-             
-             /**
-              * 课表
-              *
-              * @return
-              */
-             @Bean
-             public JwzxTimetableService jwzxCourseTableService() {
-                 return new JwzxCourseTableServiceImpl(this.jwzxService());
-             }
-             
-             /**
-              * @return 学生信息
-              */
-             @Bean
-             public JwzxStudentInfoService jwzxStudentInfoService() {
-                 return new JwzxStudentInfoServiceImpl(this.jwzxService());
-             }
-             
-             /**
-              * @return 日期
-              */
-             @Bean
-             public JwzxDateService jwzxDateService() {
-                 return new JwzxDateServiceImpl(this.jwzxService());
-             }
-             
-             /**
-              * @return 教师信息
-              */
-             @Bean
-             public JwzxTeacherInfoService jwzxTeacherInfoService() {
-                 return new JwzxTeacherInfoServiceImpl(this.jwzxService());
-             }
-             
-             /**
-              * @return 成绩服务
-              */
-             @Bean
-             public JwzxGradeService jwzxGradeService() {
-                 return new JwzxGradeServiceImpl(this.jwzxService());
-             }
-         }
+         ```java
+            package com.juzi.cyzs.config;
+            
+            import com.github.juzi214032.cqupt.sdk.jwzx.config.JwzxSimpleConfig;
+            import org.springframework.context.annotation.Bean;
+            import org.springframework.context.annotation.Configuration;
+            
+            /**
+             * 爬虫配置
+             *
+             * @author Juzi - https://juzibiji.top
+             * @since 2019/9/21 18:54
+             */
+            @Configuration
+            public class CquptSdkConfig {
+                
+                /**
+                 * @return 基础服务
+                 */
+                @Bean
+                public JwzxService jwzxService() {
+                    JwzxSimpleConfig jwzxSimpleConfig = new JwzxSimpleConfig(false);
+                    jwzxSimpleConfig.setDomainOut("http://jwzx.cqu.pt");
+                    return new JwzxServiceImpl(jwzxSimpleConfig);
+                }
+                
+                /**
+                 * 课表
+                 *
+                 * @return
+                 */
+                @Bean
+                public JwzxTimetableService jwzxCourseTableService() {
+                    return new JwzxCourseTableServiceImpl(this.jwzxService());
+                }
+                
+                /**
+                 * @return 学生信息
+                 */
+                @Bean
+                public JwzxStudentInfoService jwzxStudentInfoService() {
+                    return new JwzxStudentInfoServiceImpl(this.jwzxService());
+                }
+                
+                /**
+                 * @return 日期
+                 */
+                @Bean
+                public JwzxDateService jwzxDateService() {
+                    return new JwzxDateServiceImpl(this.jwzxService());
+                }
+                
+                /**
+                 * @return 教师信息
+                 */
+                @Bean
+                public JwzxTeacherInfoService jwzxTeacherInfoService() {
+                    return new JwzxTeacherInfoServiceImpl(this.jwzxService());
+                }
+                
+                /**
+                 * @return 成绩服务
+                 */
+                @Bean
+                public JwzxGradeService jwzxGradeService() {
+                    return new JwzxGradeServiceImpl(this.jwzxService());
+                }
+            }
+            ```
          ```
       ```
 

@@ -48,10 +48,7 @@
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
         </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
