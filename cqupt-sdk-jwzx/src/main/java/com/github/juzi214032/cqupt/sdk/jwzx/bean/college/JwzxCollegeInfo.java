@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -17,8 +18,9 @@ import java.util.List;
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class JwzxCollegeInfo {
+public class JwzxCollegeInfo implements Serializable {
 
+    private static final long serialVersionUID = 2358392105814601453L;
     /**
      * 学院名称
      */

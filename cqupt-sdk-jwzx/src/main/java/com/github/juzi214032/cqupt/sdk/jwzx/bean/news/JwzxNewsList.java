@@ -2,6 +2,8 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean.news;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 新闻列表
  *
@@ -9,8 +11,9 @@ import lombok.Data;
  * @since 2019/11/27 0:42
  */
 @Data
-public class JwzxNewsList {
+public class JwzxNewsList implements Serializable {
 
+    private static final long serialVersionUID = -6586574574534680128L;
     /**
      * 文章总数
      */

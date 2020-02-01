@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean;
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 教师信息
  *
@@ -10,8 +12,9 @@ import lombok.Data;
  * @since 2019/8/3 14:41
  */
 @Data
-public class JwzxTeacher {
+public class JwzxTeacher implements Serializable {
 
+    private static final long serialVersionUID = 8211256854711201311L;
     /**
      * 教师号
      */

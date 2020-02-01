@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 课程考试
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxCourseExam {
+public class JwzxCourseExam implements Serializable {
 
+    private static final long serialVersionUID = 2193080798595100353L;
     /**
      * 编号
      */

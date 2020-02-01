@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean.grade;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 补考成绩
  *
@@ -11,7 +13,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxGradeMakeUpExam {
+public class JwzxGradeMakeUpExam implements Serializable {
+    private static final long serialVersionUID = 6764132405371704339L;
     /**
      * 学期
      */

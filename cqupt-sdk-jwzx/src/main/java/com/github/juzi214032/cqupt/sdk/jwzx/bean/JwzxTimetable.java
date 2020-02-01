@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 课表上的课程
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxTimetable {
+public class JwzxTimetable implements Serializable {
 
+    private static final long serialVersionUID = 8282604683674691232L;
     /**
      * 教学班id
      */

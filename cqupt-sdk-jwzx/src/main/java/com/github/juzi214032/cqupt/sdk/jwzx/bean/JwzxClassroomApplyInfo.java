@@ -3,6 +3,7 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +21,9 @@ import java.util.Map;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxClassroomApplyInfo {
+public class JwzxClassroomApplyInfo implements Serializable {
 
+    private static final long serialVersionUID = -5813248552770560083L;
     /**
      * 申请原因（就是申请类型）
      */

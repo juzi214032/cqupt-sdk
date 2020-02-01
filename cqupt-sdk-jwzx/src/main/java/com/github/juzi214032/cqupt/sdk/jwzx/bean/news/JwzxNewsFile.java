@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean.news;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 教务新闻附件
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxNewsFile {
+public class JwzxNewsFile implements Serializable {
 
+    private static final long serialVersionUID = -780234339132729055L;
     /**
      * 文件id
      * 用于下载文件

@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 学生基础信息
  *
@@ -14,8 +16,9 @@ import lombok.experimental.Accessors;
 @Data
 @ToString
 @Accessors(chain = true)
-public class JwzxStudent {
+public class JwzxStudent implements Serializable {
 
+    private static final long serialVersionUID = 7787778583256062426L;
     /**
      * 学号
      */

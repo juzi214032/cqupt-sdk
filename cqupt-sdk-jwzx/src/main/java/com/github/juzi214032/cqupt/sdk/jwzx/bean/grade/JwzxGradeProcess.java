@@ -3,6 +3,7 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean.grade;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,8 +14,9 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxGradeProcess {
+public class JwzxGradeProcess implements Serializable {
 
+    private static final long serialVersionUID = 4154541868468583389L;
     /**
      * 学期
      */
@@ -38,7 +40,8 @@ public class JwzxGradeProcess {
 
     @Data
     @Accessors(chain = true)
-    public class JwzxGradeProcessDetail {
+    public class JwzxGradeProcessDetail implements Serializable {
+        private static final long serialVersionUID = -8102237937611553223L;
         /**
          * 成绩上报教师
          */

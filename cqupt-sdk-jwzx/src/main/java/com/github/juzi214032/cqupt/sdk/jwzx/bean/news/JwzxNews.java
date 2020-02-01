@@ -4,6 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,8 +15,9 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxNews {
+public class JwzxNews implements Serializable {
 
+    private static final long serialVersionUID = 5561257116730382318L;
     /**
      * 新闻id
      */

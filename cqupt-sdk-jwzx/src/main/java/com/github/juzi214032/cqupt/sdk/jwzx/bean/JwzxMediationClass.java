@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 调停课
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxMediationClass {
+public class JwzxMediationClass implements Serializable {
 
+    private static final long serialVersionUID = -7713664961985069220L;
     /**
      * 学期
      */

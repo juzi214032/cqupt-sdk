@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.jwzx.bean.grade;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 期末成绩
  *
@@ -11,7 +13,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class JwzxGradeEndTerm {
+public class JwzxGradeEndTerm implements Serializable {
+    private static final long serialVersionUID = 5394280509906039986L;
     /**
      * 学期
      */
