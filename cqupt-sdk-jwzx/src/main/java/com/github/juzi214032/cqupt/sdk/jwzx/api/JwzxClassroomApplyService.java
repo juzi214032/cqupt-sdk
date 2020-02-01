@@ -1,11 +1,12 @@
 package com.github.juzi214032.cqupt.sdk.jwzx.api;
 
+import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroom;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroomApplyInfo;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroomApplyRecord;
 import com.github.juzi214032.cqupt.sdk.jwzx.exception.JwzxClassroomApplyException;
 
 import java.util.List;
-import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * 教室申请
@@ -36,6 +37,11 @@ public interface JwzxClassroomApplyService {
     String APPLY_CLASSROOM_RECORD_URL = "/jssq/jssqHistory.php";
 
     /**
+     * 可用教室信息提取
+     */
+    Pattern AVAILABLE_CLASSROOM_PATTERN = Pattern.compile("^(\\d+)\\((\\d+)\\)");
+
+    /**
      * 获取申请教室所需的固定信息
      *
      * @param username 账号
@@ -54,7 +60,7 @@ public interface JwzxClassroomApplyService {
      * @param courseNo 第几节
      * @return
      */
-    List<Map<String, String>> getAvailableClassroom(String username, String password, String week, String weekNo, String courseNo);
+    List<JwzxClassroom> getAvailableClassroom(String username, String password, String week, String weekNo, String courseNo);
 
     /**
      * 获取历史申请记录

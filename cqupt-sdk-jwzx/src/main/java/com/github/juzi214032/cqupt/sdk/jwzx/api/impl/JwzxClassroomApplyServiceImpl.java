@@ -3,9 +3,11 @@ package com.github.juzi214032.cqupt.sdk.jwzx.api.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxClassroomApplyService;
 import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxService;
+import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroom;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroomApplyInfo;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroomApplyRecord;
 import com.github.juzi214032.cqupt.sdk.jwzx.exception.JwzxClassroomApplyException;
+import com.github.juzi214032.cqupt.sdk.jwzx.util.RegexUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -84,8 +86,10 @@ public class JwzxClassroomApplyServiceImpl implements JwzxClassroomApplyService 
     }
 
     @Override
-    public List<Map<String, String>> getAvailableClassroom(String username, String password, String week, String weekNo, String courseNo) {
+    public List<JwzxClassroom> getAvailableClassroom(String username, String password, String week, String weekNo, String courseNo) {
         log.debug("用户[{}]，开始获取可用教室", username);
+
+        List<JwzxClassroom> classroomList = new ArrayList<>();
 
         // 构造请求参数
         Map<String, String> param = new HashMap<>(3);
@@ -94,18 +98,18 @@ public class JwzxClassroomApplyServiceImpl implements JwzxClassroomApplyService 
         param.put("sd", courseNo);
 
         Document document = this.jwzxService.get(AVAILABLE_CLASSROOM_URL, username, password, param);
-        // 可申请教室
-        Elements classroomElements = document.select("td");
 
         // 获取可申请教室列表
-        List<Map<String, String>> classrooms = new ArrayList<>();
-        for (Element element : classroomElements) {
-            Map<String, String> classroom = new HashMap<>(1);
-            classroom.put(element.text(), element.select("input").val());
-            classrooms.add(classroom);
+        List<String> classroomStringList = document.select("td").eachText();
+
+        for (String value : classroomStringList) {
+            List<String> results = RegexUtil.parse(AVAILABLE_CLASSROOM_PATTERN, value);
+            JwzxClassroom classroom = new JwzxClassroom();
+            classroom.setName(results.get(0)).setContain(results.get(1));
+            classroomList.add(classroom);
         }
         log.debug("用户[{}]，结束获取可用教室", username);
-        return classrooms;
+        return classroomList;
     }
 
     @Override
