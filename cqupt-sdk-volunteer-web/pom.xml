@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cqupt-sdk</artifactId>
-        <groupId>com.juzi</groupId>
-        <version>1.0.0</version>
+        <groupId>com.github.juzi214032</groupId>
+        <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,23 +13,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.juzi</groupId>
+            <groupId>com.github.juzi214032</groupId>
             <artifactId>cqupt-sdk-common</artifactId>
-            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.5.1</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-crypto</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-core</artifactId>
         </dependency>
     </dependencies>
 
