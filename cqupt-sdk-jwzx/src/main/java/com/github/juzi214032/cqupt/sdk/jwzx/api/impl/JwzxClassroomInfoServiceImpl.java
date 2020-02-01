@@ -1,8 +1,9 @@
 package com.github.juzi214032.cqupt.sdk.jwzx.api.impl;
 
-import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroom;
 import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxClassroomInfoService;
 import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxService;
+import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroom;
+import com.github.juzi214032.cqupt.sdk.jwzx.util.RegexUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -41,6 +42,33 @@ public class JwzxClassroomInfoServiceImpl implements JwzxClassroomInfoService {
                 .map(e -> e.attr("value"))
                 .collect(Collectors.toList());
 
+        return classroomList;
+    }
+
+    @Override
+    public List<JwzxClassroom> getFreeClassroomList(String zc, String xq, String[] sd) {
+        List<JwzxClassroom> classroomList = new ArrayList<>();
+        // 构造参数
+        Map<String, String> data = new HashMap<>(sd.length + 3);
+        data.put("zcStart", zc);
+        data.put("zcEnd", zc);
+        data.put("xq", xq);
+        for (String value : sd) {
+            data.put("sd[]", value);
+        }
+
+        Document document = jwzxService.get(FREE_CLASSROOM_API, data);
+        List<String> classroomStringList = document.select("a").eachText();
+        for (String value : classroomStringList) {
+            List<String> results = RegexUtil.parse(FREE_CLASSROOM_REGEX, value);
+            // 防止没获取到教室容纳人数造成空指针异常
+            if(results.size()==1){
+                results.add("0");
+            }
+            JwzxClassroom jwzxClassroom = new JwzxClassroom();
+            jwzxClassroom.setName(results.get(0)).setContain(results.get(1));
+            classroomList.add(jwzxClassroom);
+        }
         return classroomList;
     }
 
