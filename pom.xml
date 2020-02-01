@@ -7,12 +7,12 @@
     <groupId>com.github.juzi214032</groupId>
     <artifactId>cqupt-sdk</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     
     <modules>
+        <module>cqupt-sdk-common</module>
         <module>cqupt-sdk-jwzx</module>
         <module>cqupt-sdk-volunteer-web</module>
-        <module>cqupt-sdk-common</module>
         <module>cqupt-sdk-library</module>
         <module>cqupt-sdk-oa</module>
     </modules>
