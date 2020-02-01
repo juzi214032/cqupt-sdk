@@ -116,7 +116,7 @@ public class CASLoginUtil {
         }
 
         if (LOGIN_SUCCESS_HOST.equals(postResponse.url().getHost())) {
-            String loginFailTips = postDocument.select("#msg").val();
+            String loginFailTips = postDocument.select("#msg").text();
             log.info("CAS登录失败，服务[{}]，账号：[{}]，密码：[{}]，失败原因：[{}]", service.getUrl(), username, password, loginFailTips);
             throw new CASLoginFailedException("CAS登录失败");
         }
