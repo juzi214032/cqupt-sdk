@@ -139,6 +139,33 @@ public interface JwzxService {
     Connection.Response excute(String uri, Connection.Method method);
 
     /**
+     * 通用请求封装
+     *
+     * @param method 请求方法
+     * @param url    完整url链接
+     * @return Connection.Response对象
+     */
+    Connection.Response excute(Connection.Method method, String url);
+
+    /**
+     * 通用请求封装
+     *
+     * @param method     请求方法
+     * @param url        完整url链接
+     * @param queryData  查询参数-拼接在url后面
+     * @param headerData 请求头参数
+     * @param cookieData cookie
+     * @param bodyData   请求体参数
+     * @return Connection.Response对象
+     */
+    Connection.Response excute(Connection.Method method,
+                               String url,
+                               Map<String, String> queryData,
+                               Map<String, String> headerData,
+                               Map<String, String> cookieData,
+                               String bodyData);
+
+    /**
      * 使用统一身份认证登录
      *
      * @param username 统一识别码
