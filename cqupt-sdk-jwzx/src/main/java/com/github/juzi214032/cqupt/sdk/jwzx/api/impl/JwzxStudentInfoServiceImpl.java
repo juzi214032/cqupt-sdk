@@ -1,23 +1,23 @@
 package com.github.juzi214032.cqupt.sdk.jwzx.api.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxService;
+import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxStudentInfoService;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.student.JwzxStudent;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.student.JwzxStudentClass;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.student.JwzxStudentExtra;
 import com.github.juzi214032.cqupt.sdk.jwzx.config.JwzxConfig;
 import com.github.juzi214032.cqupt.sdk.jwzx.constant.JwzxConstants;
-import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxService;
-import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxStudentInfoService;
 import net.sf.cglib.beans.BeanCopier;
 import org.jsoup.Connection;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Juzi - https://juzibiji.top
@@ -107,19 +107,13 @@ public class JwzxStudentInfoServiceImpl implements JwzxStudentInfoService {
             throw new RuntimeException("未设置账号密码，不能抓取学生照片");
         }
 
+        // 构造cookie
         String cookie = jwzxService.login(username, password);
-        Connection.Response execute = null;
-        try {
-            execute = Jsoup
-                    .connect(jwzxConfig.getDomain() + STUDENT_PHOTO_URL + studentId)
-                    .cookie(JwzxConstants.COOKIE_NAME, cookie)
-                    .ignoreContentType(true)
-                    .method(Connection.Method.GET)
-                    .execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert execute != null;
-        return execute.bodyAsBytes();
+        Map<String, String> cookieData = new HashMap<>(1);
+        cookieData.put(JwzxConstants.COOKIE_NAME, cookie);
+
+        // 抓取照片请求
+        Connection.Response excute = this.jwzxService.excute(Connection.Method.GET, STUDENT_PHOTO_URL + studentId, null, null, cookieData, null);
+        return excute.bodyAsBytes();
     }
 }
