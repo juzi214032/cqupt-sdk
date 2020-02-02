@@ -186,17 +186,7 @@ public class JwzxServiceImpl implements JwzxService {
 
     @Override
     public Connection.Response excute(String uri, Connection.Method method) {
-        Connection.Response execute = null;
-        try {
-            execute = Jsoup
-                    .connect(jwzxConfig.getDomain() + uri)
-                    .ignoreContentType(true)
-                    .method(method)
-                    .execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return execute;
+        return this.excute(method,uri);
     }
 
     @Override
