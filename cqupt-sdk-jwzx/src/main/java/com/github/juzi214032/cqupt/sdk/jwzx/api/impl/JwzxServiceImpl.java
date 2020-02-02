@@ -200,6 +200,36 @@ public class JwzxServiceImpl implements JwzxService {
     }
 
     @Override
+    public Connection.Response excute(Connection.Method method, String url) {
+        return this.excute(method,url,null,null,null,null);
+    }
+
+    @Override
+    public Connection.Response excute(Connection.Method method, String url, Map<String, String> queryData, Map<String, String> headerData, Map<String, String> cookieData, String bodyData) {
+        // 请求url
+        url=this.jwzxConfig.getDomain()+url;
+        // 超时重试次数
+        int maxRetryTimes = this.jwzxConfig.getMaxRetryTimes();
+        // http请求超时时间
+        int timeout = this.jwzxConfig.getTimeout();
+
+        for (int i = 1; i <= maxRetryTimes; i++) {
+            try {
+                return HttpUtil.excute(method, url, queryData, headerData, cookieData, bodyData, timeout);
+            } catch (IOException e) {
+                if (i == maxRetryTimes) {
+                    log.warn("请求OA服务失败，访问url[{}]", url, e);
+                    throw new RuntimeException("请求教务在线失败",e);
+                } else {
+                    log.info("请求OA服务失败，访问url[{}]", url);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
     public String login(String username, String password) {
         return this.login(username, password, false);
     }
@@ -337,4 +367,6 @@ public class JwzxServiceImpl implements JwzxService {
             throw new JwzxLoginFailedException();
         }
     }
+
+
 }
