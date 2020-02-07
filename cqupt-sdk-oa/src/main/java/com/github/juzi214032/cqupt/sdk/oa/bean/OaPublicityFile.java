@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.oa.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 公示公告文件
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class OaPublicityFile {
+public class OaPublicityFile implements Serializable {
 
+    private static final long serialVersionUID = 697325128971912793L;
     /**
      * 文件名
      */

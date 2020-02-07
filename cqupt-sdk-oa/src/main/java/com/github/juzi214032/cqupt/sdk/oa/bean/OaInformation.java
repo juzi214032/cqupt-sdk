@@ -3,6 +3,7 @@ package com.github.juzi214032.cqupt.sdk.oa.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,7 +21,8 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class OaInformation {
+public class OaInformation implements Serializable {
+    private static final long serialVersionUID = -5306010312115239617L;
     /**
      * 信息id
      */

@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.oa.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 事务通知附件
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class OaTransactionFile {
+public class OaTransactionFile implements Serializable {
 
+    private static final long serialVersionUID = -8894372955896771073L;
     /**
      * 文件名
      */

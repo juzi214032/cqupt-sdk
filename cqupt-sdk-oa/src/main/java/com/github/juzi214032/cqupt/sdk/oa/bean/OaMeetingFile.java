@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.oa.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * OA文件
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class OaMeetingFile {
+public class OaMeetingFile implements Serializable {
 
+    private static final long serialVersionUID = -5236717870884103116L;
     /**
      * 文件名
      */
