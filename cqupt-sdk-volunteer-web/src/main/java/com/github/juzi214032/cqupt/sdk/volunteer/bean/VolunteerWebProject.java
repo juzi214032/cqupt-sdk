@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.volunteer.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 项目
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class VolunteerWebProject {
+public class VolunteerWebProject implements Serializable {
 
+    private static final long serialVersionUID = 3117238048854323712L;
     /**
      * 项目ID
      */
