@@ -3,8 +3,6 @@ package com.github.juzi214032.cqupt.sdk.library.bean.book;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.util.List;
-
 /**
  * 图书信息
  *
@@ -58,7 +56,17 @@ public class LibBookInfo {
     private String borrowCount;
 
     /**
-     * 所有副本
+     * 定价
      */
-    private List<LibBookLocation> bookList;
+    private String price;
+
+    /**
+     * isbn
+     */
+    private String isbn;
+
+    /**
+     * 简介
+     */
+    private String brief;
 }

@@ -66,6 +66,14 @@ public interface LibService {
     Map<String, String> login(String username, String password, String name, boolean forceUpdate);
 
     /**
+     * 使用统一身份认证登录
+     * @param username 账号
+     * @param password 密码
+     * @return
+     */
+    String loginByCas(String username, String password);
+
+    /**
      * get请求封装
      *
      * @param url 请求地址

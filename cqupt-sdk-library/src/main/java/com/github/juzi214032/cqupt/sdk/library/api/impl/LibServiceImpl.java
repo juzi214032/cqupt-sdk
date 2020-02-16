@@ -1,13 +1,17 @@
 package com.github.juzi214032.cqupt.sdk.library.api.impl;
 
+import cn.hutool.crypto.digest.DigestUtil;
+import com.github.juzi214032.cqupt.sdk.common.enums.CASService;
+import com.github.juzi214032.cqupt.sdk.common.exception.CASLoginFailedException;
+import com.github.juzi214032.cqupt.sdk.common.util.CASLoginUtil;
 import com.github.juzi214032.cqupt.sdk.common.util.HttpUtil;
 import com.github.juzi214032.cqupt.sdk.library.api.LibService;
-import com.github.juzi214032.cqupt.sdk.library.exception.LibNetworkException;
-import com.github.juzi214032.cqupt.sdk.library.util.LibAuthCodeUtil;
 import com.github.juzi214032.cqupt.sdk.library.config.LibConfig;
 import com.github.juzi214032.cqupt.sdk.library.constant.LibConstants;
 import com.github.juzi214032.cqupt.sdk.library.exception.LibAccountUncheckBaseException;
 import com.github.juzi214032.cqupt.sdk.library.exception.LibBaseException;
+import com.github.juzi214032.cqupt.sdk.library.exception.LibNetworkException;
+import com.github.juzi214032.cqupt.sdk.library.util.LibAuthCodeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.ehcache.Cache;
@@ -186,6 +190,43 @@ public class LibServiceImpl implements LibService {
     }
 
     @Override
+    public String loginByCas(String username, String password) {
+
+        log.debug("用户[{}]，开始使用CAS登录图书系统", username);
+
+        int maxRetryTime = libConfig.getMaxRetryTimes();
+        String cacheKey = DigestUtil.md5Hex(username + password);
+
+        // 查找缓存
+        String cacheCookie = cookieCache.get(cacheKey);
+        if (cacheCookie != null) {
+            log.debug("用户[{}]，从缓存中获取cookie登录图书系统", username);
+            return cacheCookie;
+        }
+
+        // 发起请求
+        Map<String, String> cookies = null;
+        for (int i = 1; i <= maxRetryTime; i++) {
+            try {
+                cookies = CASLoginUtil.login(username, password, CASService.LIBRARY);
+            } catch (CASLoginFailedException e) {
+                if (i == maxRetryTime) {
+                    log.warn("用户[{}]，使用CAS登录教务在线失败", username, e);
+                    throw new LibBaseException("登录图书馆系统失败,请检查你的账号密码是否正确", e);
+                } else {
+                    log.info("用户[{}]，使用CAS登录教务在线失败", username);
+                }
+            }
+        }
+
+        String cookie = cookies.get(LibConstants.COOKIE_NAME);
+        cookieCache.put(cacheKey, cookie);
+        log.debug("用户[{}]，使用CAS登录教务在线成功，cookie已存入缓存", username);
+        log.debug("用户[{}]，结束使用CAS登录教务在线", username);
+        return cookie;
+    }
+
+    @Override
     public Document get(String url) {
         return this.get(url, null, null, null, null, null);
     }
@@ -222,6 +263,17 @@ public class LibServiceImpl implements LibService {
 
     @Override
     public Document get(String url, Map<String, String> queryData, Map<String, String> headerData, Map<String, String> cookieData, String username, String password) {
+
+
+        if (username != null && password != null) {
+            // 登录
+            String cookie = this.loginByCas(username, password);
+            if(cookieData==null){
+                cookieData = new HashMap<>();
+            }
+            cookieData.put(LibConstants.COOKIE_NAME,cookie);
+        }
+
         // 拼接url
         url = this.getConfig().getDomain() + url;
         // 最大重试次数

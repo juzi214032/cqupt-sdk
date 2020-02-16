@@ -1,6 +1,7 @@
 package com.github.juzi214032.cqupt.sdk.library.bean.book;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 书籍位置
@@ -9,6 +10,7 @@ import lombok.Data;
  * @since 2020/2/16 14:13
  */
 @Data
+@Accessors(chain = true)
 public class LibBookLocation {
 
     /**
