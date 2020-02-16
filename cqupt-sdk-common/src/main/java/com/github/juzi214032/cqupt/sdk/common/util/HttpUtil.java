@@ -54,7 +54,7 @@ public class HttpUtil {
     }
 
     /**
-     * @param method  请求防范
+     * @param method  请求方法
      * @param url     完整url链接
      * @param timeout 超时时间
      * @return Connection.Response对象

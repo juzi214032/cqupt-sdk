@@ -3,7 +3,7 @@ package com.github.juzi214032.cqupt.sdk.jwzx.api.impl;
 import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxClassroomInfoService;
 import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxService;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroom;
-import com.github.juzi214032.cqupt.sdk.jwzx.util.RegexUtil;
+import com.github.juzi214032.cqupt.sdk.common.util.RegexUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

@@ -1,4 +1,4 @@
-package com.github.juzi214032.cqupt.sdk.jwzx.util;
+package com.github.juzi214032.cqupt.sdk.common.util;
 
 import java.util.ArrayList;
 import java.util.List;

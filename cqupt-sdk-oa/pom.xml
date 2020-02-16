@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cqupt-sdk-oa</artifactId>
-
+    
     <dependencies>
         <dependency>
             <groupId>com.github.juzi214032</groupId>

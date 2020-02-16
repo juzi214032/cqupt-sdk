@@ -1,6 +1,7 @@
 package com.github.juzi214032.cqupt.sdk.volunteer.api.impl;
 
 import cn.hutool.core.codec.Base64;
+import cn.hutool.crypto.asymmetric.AsymmetricAlgorithm;
 import cn.hutool.crypto.asymmetric.AsymmetricCrypto;
 import cn.hutool.crypto.asymmetric.KeyType;
 import com.alibaba.fastjson.JSON;
@@ -8,7 +9,7 @@ import com.github.juzi214032.cqupt.sdk.volunteer.api.VolunteerWebService;
 import com.github.juzi214032.cqupt.sdk.volunteer.bean.VolunteerWebLoginResult;
 import com.github.juzi214032.cqupt.sdk.volunteer.config.VolunteerWebConfig;
 import com.github.juzi214032.cqupt.sdk.volunteer.constant.VolunteerWebConstant;
-import com.github.juzi214032.cqupt.sdk.volunteer.exception.VolunteerWebException;
+import com.github.juzi214032.cqupt.sdk.volunteer.exception.VolunteerWebLoginFailedException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.ehcache.Cache;
@@ -35,7 +36,7 @@ public class VolunteerWebServiceImpl implements VolunteerWebService {
 
     private VolunteerWebConfig volunteerWebConfig;
 
-    private static final AsymmetricCrypto RSA = new AsymmetricCrypto("RSA", null, VolunteerWebConstant.PUBLIC_KEY);
+    private static final AsymmetricCrypto RSA = new AsymmetricCrypto(AsymmetricAlgorithm.RSA_ECB_PKCS1, null, VolunteerWebConstant.PUBLIC_KEY);
 
     /**
      * 存放cookie的cache，半小时失效
@@ -58,7 +59,6 @@ public class VolunteerWebServiceImpl implements VolunteerWebService {
 
     @Override
     public String login(String username, String password) {
-
         return this.login(username, password, false);
     }
 
@@ -82,7 +82,7 @@ public class VolunteerWebServiceImpl implements VolunteerWebService {
             try {
                 response = Jsoup
                         .connect(volunteerWebConfig.getDomain() + LOGIN_PAGE_URL)
-                        .timeout(3000)
+                        .timeout(10000)
                         .execute();
             } catch (IOException e) {
                 log.warn("网络连接失败，尝试访问url：{}，已尝试{}次，错误原因：{}", volunteerWebConfig.getDomain() + LOGIN_PAGE_URL, retryTime + 1, e.getMessage());
@@ -126,7 +126,7 @@ public class VolunteerWebServiceImpl implements VolunteerWebService {
             try {
                 json = Jsoup
                         .connect(volunteerWebConfig.getDomain() + LOGIN_API_URL)
-                        .timeout(3000)
+                        .timeout(10000)
                         .header("Referer", volunteerWebConfig.getDomain())
                         .cookie(VolunteerWebConstant.COOKIE_NAME, cookie)
                         .data(data)
@@ -145,7 +145,8 @@ public class VolunteerWebServiceImpl implements VolunteerWebService {
         VolunteerWebLoginResult volunteerWebLoginResult = JSON.parseObject(json, VolunteerWebLoginResult.class);
 
         if (!"0".equals(volunteerWebLoginResult.getCode())) {
-            throw new VolunteerWebException("登录失败");
+            String msg = volunteerWebLoginResult.getMsg();
+            throw new VolunteerWebLoginFailedException(msg == null ? "登录中国志愿网失败" : msg);
         }
 
         // 登录成功，保存cookie
@@ -187,7 +188,7 @@ public class VolunteerWebServiceImpl implements VolunteerWebService {
             try {
                 Connection.Response execute = Jsoup
                         .connect(url)
-                        .timeout(3000)
+                        .timeout(10000)
                         .cookie(VolunteerWebConstant.COOKIE_NAME, cookie)
                         .data(data)
                         .method(Connection.Method.GET)

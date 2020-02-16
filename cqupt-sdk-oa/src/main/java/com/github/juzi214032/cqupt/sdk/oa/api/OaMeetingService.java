@@ -5,7 +5,7 @@ import com.github.juzi214032.cqupt.sdk.oa.bean.OaMeeting;
 import java.util.List;
 
 /**
- * 通用资讯方法
+ * 会议通知
  *
  * @author Juzi - https://juzibiji.top
  * @date 2019/12/28 22:39

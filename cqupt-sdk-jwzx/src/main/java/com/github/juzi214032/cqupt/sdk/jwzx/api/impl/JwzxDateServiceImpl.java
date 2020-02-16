@@ -1,7 +1,7 @@
 package com.github.juzi214032.cqupt.sdk.jwzx.api.impl;
 
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxDate;
-import com.github.juzi214032.cqupt.sdk.jwzx.util.RegexUtil;
+import com.github.juzi214032.cqupt.sdk.common.util.RegexUtil;
 import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxDateService;
 import com.github.juzi214032.cqupt.sdk.jwzx.api.JwzxService;
 import org.jsoup.nodes.Document;

@@ -81,8 +81,8 @@ public interface VolunteerWebService {
      * 通用get请求
      *
      * @param uri      网址路径
-     * @param username 教务在线账号
-     * @param password 教务在线密码
+     * @param username 账号
+     * @param password 密码
      * @param data     携带参数
      * @return html文档
      */
@@ -100,8 +100,8 @@ public interface VolunteerWebService {
      * 通用post请求
      *
      * @param uri      网址路径
-     * @param username 教务在线账号
-     * @param password 教务在线密码
+     * @param username 账号
+     * @param password 密码
      * @return html文档
      */
     Document post(String uri, String username, String password);
@@ -119,8 +119,8 @@ public interface VolunteerWebService {
      * 通用post请求
      *
      * @param uri      网址路径
-     * @param username 教务在线账号
-     * @param password 教务在线密码
+     * @param username 账号
+     * @param password 密码
      * @param data     携带参数
      * @return html文档
      */

@@ -7,7 +7,7 @@ import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroom;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroomApplyInfo;
 import com.github.juzi214032.cqupt.sdk.jwzx.bean.JwzxClassroomApplyRecord;
 import com.github.juzi214032.cqupt.sdk.jwzx.exception.JwzxClassroomApplyException;
-import com.github.juzi214032.cqupt.sdk.jwzx.util.RegexUtil;
+import com.github.juzi214032.cqupt.sdk.common.util.RegexUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
