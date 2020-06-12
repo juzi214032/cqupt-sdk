@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import org.jsoup.select.Elements;
 
+import java.io.Serializable;
+
 /**
  * 图书馆页面获取的个人信息
  *
@@ -12,8 +14,9 @@ import org.jsoup.select.Elements;
  */
 @Data
 @Accessors(chain = true)
-public class LibPersonInfo {
+public class LibPersonInfo implements Serializable {
 
+    private static final long serialVersionUID = 376109881123455306L;
     /**
      * 姓名
      */

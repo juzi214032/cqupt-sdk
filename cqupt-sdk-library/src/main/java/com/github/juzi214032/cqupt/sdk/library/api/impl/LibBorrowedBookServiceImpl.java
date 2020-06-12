@@ -1,8 +1,9 @@
 package com.github.juzi214032.cqupt.sdk.library.api.impl;
 
-import com.github.juzi214032.cqupt.sdk.library.bean.LibBorrowedBook;
 import com.github.juzi214032.cqupt.sdk.library.api.LibBorrowedBookService;
 import com.github.juzi214032.cqupt.sdk.library.api.LibService;
+import com.github.juzi214032.cqupt.sdk.library.bean.LibBorrowedBook;
+import com.github.juzi214032.cqupt.sdk.library.bean.LibBorrowedBookResult;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -25,7 +26,7 @@ public class LibBorrowedBookServiceImpl implements LibBorrowedBookService {
     }
 
     @Override
-    public List<LibBorrowedBook> getBorrowedBooks(String username, String password) {
+    public LibBorrowedBookResult getBorrowedBooks(String username, String password) {
         Document document = this.libService.get(BORROWED_BOOK_LIST_URL, username, password);
         Elements trs = document.select("#mylib_content tr + tr");
         List<LibBorrowedBook> libBorrowedBooks = new ArrayList<>(trs.size());
@@ -59,6 +60,14 @@ public class LibBorrowedBookServiceImpl implements LibBorrowedBookService {
                     .setStorePlace(storePlace);
             libBorrowedBooks.add(libBorrowedBook);
         }
-        return libBorrowedBooks;
+
+        // 构造结果
+        LibBorrowedBookResult borrowedBookResult = new LibBorrowedBookResult();
+        List<String> count = document.select("p[style=margin:10px auto;] b").eachText();
+        borrowedBookResult
+                .setBorrowBookCount(count.get(0))
+                .setAllBookCount(count.get(1))
+                .setData(libBorrowedBooks);
+        return borrowedBookResult;
     }
 }

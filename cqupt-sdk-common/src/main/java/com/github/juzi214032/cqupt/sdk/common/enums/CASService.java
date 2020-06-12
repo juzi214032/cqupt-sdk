@@ -11,7 +11,7 @@ public enum CASService {
     /**
      * 教务在线
      */
-    JWZX("http://jwzx.cqupt.edu.cn/tysfrz/index.php"),
+    JWZX("http://jwc.cqupt.edu.cn/tysfrz/index.php"),
     /**
      * 图书馆
      */

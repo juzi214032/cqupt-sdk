@@ -2,6 +2,7 @@ package com.github.juzi214032.cqupt.sdk.library.bean.book;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,8 +12,9 @@ import java.util.List;
  * @since 2020/2/16 14:23
  */
 @Data
-public class LibBookInfoResult {
+public class LibBookInfoResult implements Serializable {
 
+    private static final long serialVersionUID = 7652155488337048413L;
     /**
      * 总页数
      */

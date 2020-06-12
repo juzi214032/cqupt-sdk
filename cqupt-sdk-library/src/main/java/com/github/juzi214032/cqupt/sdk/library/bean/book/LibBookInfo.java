@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.library.bean.book;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 图书信息
  *
@@ -11,8 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class LibBookInfo {
+public class LibBookInfo implements Serializable {
 
+    private static final long serialVersionUID = 4295236742908970017L;
     /**
      * 书籍唯一id
      * （多本相同的书此id）相同

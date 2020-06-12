@@ -226,20 +226,11 @@ public class JwzxServiceImpl implements JwzxService {
 
     @Override
     public String login(String username, String password, boolean forceUpdate) {
-        if (username.length() == 7) {
-            try {
-                return this.loginByCAS(username, password);
-            } catch (CASLoginFailedException e) {
-                log.error("用户[{}]，登录教务在线失败", username, e);
-                throw new JwzxLoginFailedException(e);
-            }
-        } else {
-            try {
-                return this.loginBySystem(username, password);
-            } catch (IOException | JwzxLoginFailedException e) {
-                log.error("用户[{}]，登录教务在线失败", username, e);
-                throw new JwzxLoginFailedException(e);
-            }
+        try {
+            return this.loginByCAS(username, password);
+        } catch (CASLoginFailedException e) {
+            log.error("用户[{}]，登录教务在线失败", username, e);
+            throw new JwzxLoginFailedException(e);
         }
     }
 
@@ -279,84 +270,4 @@ public class JwzxServiceImpl implements JwzxService {
         log.debug("用户[{}]，结束使用CAS登录教务在线", username);
         return cookie;
     }
-
-    @Override
-    public String loginBySystem(String username, String password) throws IOException, JwzxLoginFailedException {
-        log.debug("用户[{}]，开始使用教务在线内置系统登录", username);
-
-        int maxRetryTime = jwzxConfig.getMaxRetryTimes();
-        String cacheKey = DigestUtil.md5Hex(username + password);
-
-        // 查找缓存
-        String cacheCookie = cookieCache.get(cacheKey);
-        if (cacheCookie != null) {
-            log.debug("用户[{}]，从缓存获取到cookie", username);
-            log.debug("用户[{}]，结束使用教务在线内置系统登录", username);
-            return cacheCookie;
-        }
-
-        // 获取登录验证码
-        Connection.Response response = null;
-        for (int i = 1; i <= maxRetryTime; i++) {
-            try {
-                response = HttpUtil.excute(Connection.Method.GET, jwzxConfig.getDomain() + AUTH_CODE_IMG_URL, jwzxConfig.getTimeout());
-                break;
-            } catch (IOException e) {
-                if (i == maxRetryTime) {
-                    log.warn("用户[{}]，使用教务在线内置系统登陆时，获取验证码失败", username, e);
-                    throw e;
-                } else {
-                    log.info("用户[{}]，使用教务在线内置系统登陆时，获取验证码失败", username);
-                }
-            }
-        }
-
-        // 获取sessionId
-        String cookie = response.cookie(JwzxConstants.COOKIE_NAME);
-        // 识别验证码
-        BufferedInputStream bufferedInputStream = response.bodyStream();
-        String authCode = AuthCodeUtil.jwzx(bufferedInputStream);
-
-        // 构造body参数
-        Map<String, String> bodyData = new HashMap<>(3);
-        bodyData.put(JwzxConstants.LoginParam.USERNAME, username);
-        bodyData.put(JwzxConstants.LoginParam.PASSWORD, password);
-        bodyData.put(JwzxConstants.LoginParam.AUTH_CODE, authCode);
-
-        // 构造cookie参数
-        Map<String, String> cookieData = new HashMap<>(1);
-        cookieData.put(JwzxConstants.COOKIE_NAME, cookie);
-
-        // 发起请求，解析JSON
-        String json = null;
-        for (int i = 1; i <= maxRetryTime; i++) {
-            try {
-                json = HttpUtil.post(jwzxConfig.getDomain() + LOGIN_URL, null, null, cookieData, HttpUtil.convertMapToUrlencoded(bodyData), this.jwzxConfig.getTimeout()).text();
-                break;
-            } catch (IOException e) {
-                if (i == maxRetryTime) {
-                    log.warn("用户[{}]，使用教务在线内置系统登陆时，登录失败", username, e);
-                    throw e;
-                } else {
-                    log.info("用户[{}]，使用教务在线内置系统登陆时，登录失败", username);
-                }
-            }
-        }
-        JwzxLoginResult result = JSON.parseObject(json, JwzxLoginResult.class);
-
-        // 根据教务在线返回信息，判断是否登录成功
-        if (JwzxConstants.LoginResultCode.LOGIN_SUCCESS.equals(result.getCode())) {
-            // 登录成功，保存cookie
-            cookieCache.put(cacheKey, cookie);
-            log.debug("用户[{}]，登录成功，cookie已存入缓存", username);
-            log.debug("用户[{}]，结束使用教务在线内置系统登录", username);
-            return cookie;
-        } else {
-            // 登录失败，抛出异常
-            log.info("用户[{}]，使用教务在线内置系统登陆时，登录失败", username);
-            throw new JwzxLoginFailedException();
-        }
-    }
-
-
 }

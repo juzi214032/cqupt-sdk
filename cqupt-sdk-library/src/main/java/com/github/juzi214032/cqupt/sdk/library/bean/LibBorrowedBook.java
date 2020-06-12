@@ -3,6 +3,7 @@ package com.github.juzi214032.cqupt.sdk.library.bean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -13,8 +14,9 @@ import java.time.LocalDate;
  */
 @Data
 @Accessors(chain = true)
-public class LibBorrowedBook {
+public class LibBorrowedBook implements Serializable {
 
+    private static final long serialVersionUID = -7225107225057403121L;
     /**
      * 唯一id，用于查询详细信息
      */

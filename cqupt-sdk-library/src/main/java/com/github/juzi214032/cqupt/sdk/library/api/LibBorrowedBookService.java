@@ -1,8 +1,6 @@
 package com.github.juzi214032.cqupt.sdk.library.api;
 
-import com.github.juzi214032.cqupt.sdk.library.bean.LibBorrowedBook;
-
-import java.util.List;
+import com.github.juzi214032.cqupt.sdk.library.bean.LibBorrowedBookResult;
 
 /**
  * 已借阅图书接口
@@ -24,5 +22,7 @@ public interface LibBorrowedBookService {
      * @param password
      * @return
      */
-    List<LibBorrowedBook> getBorrowedBooks(String username, String password);
+    LibBorrowedBookResult getBorrowedBooks(String username, String password);
+
+
 }

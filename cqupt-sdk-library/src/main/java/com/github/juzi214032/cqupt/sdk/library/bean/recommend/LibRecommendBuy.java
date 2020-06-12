@@ -3,6 +3,8 @@ package com.github.juzi214032.cqupt.sdk.library.bean.recommend;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * 荐购列表
  *
@@ -11,7 +13,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class LibRecommendBuy {
+public class LibRecommendBuy implements Serializable {
+    private static final long serialVersionUID = -1934032733069221767L;
     /**
      * 书名
      */
